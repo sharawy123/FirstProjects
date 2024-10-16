@@ -3,18 +3,22 @@ import 'package:islami/app_theme.dart';
 import 'package:islami/taps/hadeth/hadeth.dart';
 import 'package:islami/taps/quran/quran_tab.dart';
 import 'package:flutter/services.dart';
+import 'package:islami/taps/settings/serrings_provider.dart';
 import 'package:islami/widgets/loading_indecator.dart';
+import 'package:provider/provider.dart';
 
 class HadethContentScreen extends StatelessWidget {
   static const String routeName = '/hadethContent';
+
   @override
   Widget build (BuildContext context)  {
     Hadeth hadith = ModalRoute.of(context)!.settings.arguments as Hadeth;
+    SettingsProvider settingsProvider =Provider.of<SettingsProvider>(context);
 
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/background1.png'),
+            image: AssetImage('assets/images/${Provider.of<SettingsProvider>(context).backgroudImageName}.png'),
             fit: BoxFit.fill),
       ),
       child: Scaffold(
@@ -28,7 +32,7 @@ class HadethContentScreen extends StatelessWidget {
               horizontal: 30,
               vertical: MediaQuery.sizeOf(context).height * 0.07),
           decoration: BoxDecoration(
-              color: AppTheme.whitee.withOpacity(0.8),
+              color: settingsProvider.isDark? AppTheme.darkPrimary : AppTheme.whitee,
               borderRadius: BorderRadius.all(
                 Radius.circular(25),
               )),

@@ -14,6 +14,7 @@ class AppTheme {
           color: Colors.black,
         ),
           backgroundColor: Colors.transparent,
+          foregroundColor: black,
           centerTitle: true,
           titleTextStyle: TextStyle(
             fontSize: 30,
@@ -37,5 +38,33 @@ class AppTheme {
       ));
   static ThemeData darkTheme = ThemeData(
     primaryColor: darkPrimary,
+      appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(
+            color: whitee,
+          ),
+          backgroundColor: Colors.transparent,
+          foregroundColor: whitee,
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: whitee,
+          )),
+      scaffoldBackgroundColor: Colors.transparent,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: gold,
+        unselectedItemColor: whitee,
+        backgroundColor: darkPrimary,
+      ),
+      textTheme: TextTheme(
+          headlineSmall:
+          TextStyle(
+              fontSize: 25, fontWeight: FontWeight.w400, color: whitee),
+          titleLarge: TextStyle(
+            fontSize: 20,fontWeight: FontWeight.w400,color: gold,
+          )
+      ),
+
   );
 }

@@ -58,15 +58,15 @@ int  counter =0;
             flex:5,
             child: Column(
           children: [
-            Text("عدد التسبيحات",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w500),),
+            Text("عدد التسبيحات",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w500,color: Theme.of(context).primaryColor),),
             Container(alignment: Alignment.center,
               margin: EdgeInsets.only(top: 26),
               width: 69,
               height: 81,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(25)),
-                color: Color(0xFFB7935F),
-                border: Border.all(color: Color(0xFFB7935F)
+                color: Theme.of(context).primaryColor,
+                border: Border.all(color: Theme.of(context).primaryColor,
                 ),
 
               ) ,
@@ -78,8 +78,8 @@ int  counter =0;
               height: 51,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(25)),
-                color: Color(0xFFB7935F),
-                border: Border.all(color: Color(0xFFB7935F)
+                color: Theme.of(context).primaryColor,
+                border: Border.all(color: Theme.of(context).primaryColor,
                 ),
 
               ) ,

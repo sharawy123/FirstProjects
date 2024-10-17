@@ -5,6 +5,8 @@ import 'package:islami/taps/quran/surah_content_screen.dart';
 import 'package:islami/taps/settings/serrings_provider.dart';
 import 'app_theme.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main(){
   runApp(ChangeNotifierProvider(
     create: (_)=> SettingsProvider(),
@@ -25,6 +27,9 @@ class IslamiApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: settingsProvider.themeMode,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale : Locale(settingsProvider.LangCode),
     );
   }
 }

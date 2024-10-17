@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:islami/taps/settings/serrings_provider.dart';
-
-import '../../app_theme.dart';
 
 class SebhaTap extends StatefulWidget {
   @override
@@ -12,18 +8,15 @@ List <String> tsabeh =["سبحان الله","الحمد الله","استغفر
 int index =0;
 class _SebhaTapState extends State<SebhaTap> {
   double rotationAngle = 0.0;
-  int  counter =0;
-
+int  counter =0;
   @override
   Widget build(BuildContext context) {
-    SettingsProvider settingsProvider =Provider.of<SettingsProvider>(context);
-
     return Column(
       children: [
         Expanded(
           flex:4,
           child: Container(
-            //  color: Colors.red,
+          //  color: Colors.red,
             child: Stack(
               alignment: Alignment.center, // Center everything horizontally and vertically in the Stack
               children: [
@@ -60,42 +53,41 @@ class _SebhaTapState extends State<SebhaTap> {
             ),
           ),
         ),
-        // SizedBox(height: 12),
+       // SizedBox(height: 12),
         Expanded(
             flex:5,
             child: Column(
-              children: [
-                Text("عدد التسبيحات",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w500,color:settingsProvider.isDark ? AppTheme.whitee : AppTheme.black),),
-                Container(alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 26),
-                  width: 69,
-                  height: 81,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(25)),
-                    color: Theme.of(context).primaryColor,
-                    border: Border.all(color: Theme.of(context).primaryColor,
-                    ),
-
-                  ) ,
-                  child: Text("$counter",style: TextStyle(fontSize: 25,fontWeight: FontWeight.normal,color:settingsProvider.isDark ? AppTheme.whitee : AppTheme.black,
-                  ),),
+          children: [
+            Text("عدد التسبيحات",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w500),),
+            Container(alignment: Alignment.center,
+              margin: EdgeInsets.only(top: 26),
+              width: 69,
+              height: 81,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(25)),
+                color: Color(0xFFB7935F),
+                border: Border.all(color: Color(0xFFB7935F)
                 ),
-                Container(alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 22),
-                  width: 137,
-                  height: 51,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(25)),
-                    color:settingsProvider.isDark ? AppTheme.gold : AppTheme.lightPrimary,
-                    border: Border.all(color: Theme.of(context).primaryColor,
-                    ),
 
-                  ) ,
-                  child: Text("${tsabeh[index]}",style: TextStyle(fontSize: 25,fontWeight: FontWeight.normal,color:settingsProvider.isDark ? AppTheme.black : AppTheme.whitee,),
-                  ),
+              ) ,
+              child: Text("$counter",style: TextStyle(fontSize: 25,fontWeight: FontWeight.normal),),
+            ),
+            Container(alignment: Alignment.center,
+              margin: EdgeInsets.only(top: 22),
+              width: 137,
+              height: 51,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(25)),
+                color: Color(0xFFB7935F),
+                border: Border.all(color: Color(0xFFB7935F)
+                ),
 
-                )],
-            ))
+              ) ,
+              child: Text("${tsabeh[index]}",style: TextStyle(fontSize: 25,fontWeight: FontWeight.normal,color: Color(0xFFFFFFFF)),),
+            ),
+
+          ],
+        ))
       ],
     );
   }
@@ -106,9 +98,9 @@ class _SebhaTapState extends State<SebhaTap> {
       rotationAngle += 0.04;
       counter++;
       if(counter%30==0)
-      {
-        index++;
-      }
+        {
+          index++;
+        }
       if(index==3){
         index=0;
       }

@@ -1,31 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:islami/app_theme.dart';
+import 'package:islami/taps/hadeth/hadeth.dart';
 import 'package:islami/taps/quran/quran_tab.dart';
 import 'package:flutter/services.dart';
+import 'package:islami/taps/settings/serrings_provider.dart';
 import 'package:islami/widgets/loading_indecator.dart';
 import 'package:provider/provider.dart';
 
-import '../settings/serrings_provider.dart';
-
-class SurahContentScreen extends StatefulWidget {
-  static const String routeName = '/surahContent';
+class HadethContentScreen extends StatelessWidget {
+  static const String routeName = '/hadethContent';
 
   @override
-  State<SurahContentScreen> createState() => _SurahContentScreenState();
-}
+  Widget build (BuildContext context)  {
+    Hadeth hadith = ModalRoute.of(context)!.settings.arguments as Hadeth;
+    SettingsProvider settingsProvider =Provider.of<SettingsProvider>(context);
 
-class _SurahContentScreenState extends State<SurahContentScreen> {
-   List<String> ayat = [];
-
-  late surahContentArgs args;
-
-  @override
-   Widget build (BuildContext context)  {
-    args = ModalRoute.of(context)!.settings.arguments as surahContentArgs;
-  if(ayat.isEmpty)  {
-      loadSurahFile();
-    }
-  SettingsProvider settingsProvider =Provider.of<SettingsProvider>(context);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -34,7 +23,7 @@ class _SurahContentScreenState extends State<SurahContentScreen> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(args.SurahName),
+          title: Text(hadith.title),
           // leading: Icon(Icons.arrow_back,color: Colors.yellow,),
         ),
         body: Container(
@@ -47,27 +36,16 @@ class _SurahContentScreenState extends State<SurahContentScreen> {
               borderRadius: BorderRadius.all(
                 Radius.circular(25),
               )),
-          child:ayat.isEmpty?
-          LoadingIndicator() :
+          child:
           ListView.builder(
               itemBuilder: (_, index) => Text(
-                ayat[index],
+                hadith.content[index],
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              itemCount: ayat.length),
+              itemCount: hadith.content.length),
         ),
       ),
     );
-  }
-
-     Future <void> loadSurahFile () async  {
-   // await Future.delayed(Duration(seconds: 2));
-  String sura = await rootBundle.loadString('assets/files/${args.index+1}.txt');
-   ayat = sura.split('\r\n');
-   setState(() {
-
-   });
-
   }
 }

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami/app_theme.dart';
 import 'package:islami/taps/hadeth/hadeth.dart';
 import 'package:islami/taps/hadeth/hadeth_content_screen.dart';
 import 'package:islami/widgets/loading_indecator.dart';
+import 'package:provider/provider.dart';
+import 'package:islami/taps/settings/serrings_provider.dart';
 
 class HadethTap extends StatefulWidget {
   @override
@@ -15,12 +18,20 @@ class _HadethTapState extends State<HadethTap> {
   @override
   Widget build(BuildContext context) {
      if(ahadeth.isEmpty)loadHadithFile();
+     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
 
     return Column(
       children: [
         Image.asset(
           'assets/images/hadithlogo.png',
           height: MediaQuery.sizeOf(context).height * 0.25,
+        ),
+        Divider(
+          color:settingsProvider.isDark? AppTheme.gold : AppTheme.lightPrimary,
+        ),
+        Text('الأحاديث',style:Theme.of(context).textTheme.headlineSmall?.copyWith(color:settingsProvider.isDark? AppTheme.whitee : AppTheme.black )),
+        Divider(
+          color:settingsProvider.isDark? AppTheme.gold : AppTheme.lightPrimary,
         ),
         Expanded(
           child:ahadeth.isEmpty?

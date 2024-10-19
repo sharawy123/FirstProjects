@@ -34,3 +34,4 @@ class IslamiApp extends StatelessWidget {
     );
   }
 }
+//final project
